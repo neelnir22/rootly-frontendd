@@ -9,6 +9,8 @@ import SignUp from "./pages/signup";
 import PageNotFound from "./pages/PageNotFound";
 import ShortLinkPage from "./pages/ShortLinkPage";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import AccountPage from "./pages/AccountPage";
+import SettingsPage from "./pages/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -26,12 +28,20 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "*",
-    element: <PageNotFound />,
-  },
-  {
     path: "short-link",
     element: <ShortLinkPage />,
+  },
+  {
+    path: "admin",
+    element: <AccountPage />,
+  },
+  {
+    path: "admin/settings",
+    element: <SettingsPage />,
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
   },
 ]);
 function App() {
