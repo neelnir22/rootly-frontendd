@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-
+import { useLogin } from "@/authentication/useLogin";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,10 +19,11 @@ import { useNavigate } from "react-router";
 export function LoginForm() {
   const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
+  const { login, isPending } = useLogin();
 
   function onSubmit(data) {
-    console.log({ data });
-    // toast.success("data ");
+    console.log(data);
+    login(data);
   }
 
   function onError(err) {
@@ -30,6 +31,7 @@ export function LoginForm() {
       toast.error(err.email.message || err.password.message);
     }
   }
+
   return (
     <>
       <h1 className=" flex justify-center pb-0 items-center">Rootly</h1>

@@ -39,6 +39,11 @@ export function SignUpForm() {
       );
     }
   }
+
+  // if (isPending) {
+  //   toast.loading("....creating user account");
+  // }
+
   return (
     <>
       <h1 className=" flex justify-center pb-0 items-center">Rootly</h1>

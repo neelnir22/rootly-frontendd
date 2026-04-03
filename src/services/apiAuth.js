@@ -24,6 +24,27 @@ export async function signUp({
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
+    return "";
+  }
+
+  const data = await res.json();
+  return { token: data.token, message: data.message };
+}
+
+export async function login({ email, password }) {
+  const res = await fetch(`${backendUrl}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "something went wrong");
+    return "";
   }
 
   const data = await res.json();
