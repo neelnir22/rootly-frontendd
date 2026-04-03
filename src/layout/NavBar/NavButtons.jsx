@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router";
+
 import { Button } from "../../components/ui/button";
-import { HiOutlineMoon } from "react-icons/hi2";
 import NavToggleDarkMode from "./NavToggleDarkMode";
+
 function NavButtons() {
+  const navigate = useNavigate();
   return (
     <div className="flex gap-1 items-center">
       <NavToggleDarkMode />
-      <Button variant="ghost">Log In</Button>
-      <Button variant="secondary">Sign up</Button>
+      <Button variant="ghost" onClick={() => navigate("/login")}>
+        Log In
+      </Button>
+      <Button variant="secondary" onClick={() => navigate("/signup")}>
+        Sign up
+      </Button>
     </div>
   );
 }

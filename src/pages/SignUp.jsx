@@ -1,5 +1,7 @@
+import { SignUpForm } from "@/layout/signup/SignUpForm";
+
 function SignUp() {
-  return <div>signup</div>;
+  return <SignUpForm />;
 }
 
 export default SignUp;

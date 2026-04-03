@@ -1,5 +1,7 @@
+import { LoginForm } from "@/layout/login/LoginForm";
+
 function LoginPage() {
-  return <div>Login</div>;
+  return <LoginForm />;
 }
 
 export default LoginPage;
