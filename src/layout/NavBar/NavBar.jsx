@@ -1,10 +1,18 @@
 import NavLogo from "./NavLogo";
 import NavLinks from "./NavLinks";
 import NavButtons from "./NavButtons";
+import { useDarkMode } from "@/context/DarkModeContext";
 
 function NavBar() {
+  const { isDarkMode } = useDarkMode();
   return (
-    <nav className="flex justify-between bg-gray-200 h-15">
+    <nav
+      className={
+        isDarkMode
+          ? "flex justify-between bg-black h-15"
+          : "flex justify-between bg-gray-200 h-15"
+      }
+    >
       <NavLogo />
       <NavLinks />
       <NavButtons />

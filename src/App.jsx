@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUp from "./pages/signup";
 import PageNotFound from "./pages/PageNotFound";
 import ShortLinkPage from "./pages/ShortLinkPage";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const queryClient = new QueryClient();
 
@@ -35,8 +36,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <DarkModeProvider>
+        <RouterProvider router={router} />
+      </DarkModeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }

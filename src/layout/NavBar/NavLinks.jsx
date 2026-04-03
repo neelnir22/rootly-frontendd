@@ -1,7 +1,7 @@
 function NavLinks() {
   return (
-    <div>
-      <ul className="flex items-center justify-center gap-4">
+    <div className="flex">
+      <ul className="flex items-center gap-4">
         <a href="" className="p-2 opacity-25 hover:opacity-100">
           Features
         </a>
