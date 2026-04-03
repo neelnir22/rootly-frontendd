@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
+import { useSignup } from "@/authentication/useSignup";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,10 +20,10 @@ import { useNavigate } from "react-router";
 export function SignUpForm() {
   const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
+  const { signup, isPending } = useSignup();
 
   function onSubmit(data) {
-    console.log({ data });
-    // toast.success("data ");
+    signup(data);
   }
 
   function onError(err) {
@@ -61,7 +62,6 @@ export function SignUpForm() {
                   <Label htmlFor="email">First Name</Label>
                   <Input
                     id="firstName"
-                    type="email"
                     {...register("firstName", {
                       required: {
                         value: true,
@@ -74,7 +74,6 @@ export function SignUpForm() {
                   <Label htmlFor="email">Last Name</Label>
                   <Input
                     id="lastName"
-                    type="email"
                     {...register("lastName", {
                       required: {
                         value: true,
@@ -87,7 +86,6 @@ export function SignUpForm() {
                   <Label htmlFor="email">UserName</Label>
                   <Input
                     id="userName"
-                    type="email"
                     {...register("userName", {
                       required: {
                         value: true,
