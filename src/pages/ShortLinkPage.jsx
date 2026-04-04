@@ -1,5 +1,7 @@
+import { ShortenLinkPage } from "@/layout/Link-shortner/ShortenLinkPage";
+
 function ShortLinkPage() {
-  return <div>shortlinkpage</div>;
+  return <ShortenLinkPage />;
 }
 
 export default ShortLinkPage;

@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "short-link",
+    path: "admin/link-shortner",
     element: <ShortLinkPage />,
   },
   {

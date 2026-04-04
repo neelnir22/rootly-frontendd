@@ -1,13 +1,10 @@
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
+import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import NavBar from "../NavBar/NavBar";
-import SideBar from "./SideBar";
-import AccountNav from "./AccountNav";
+import SideBar from "../Account/SideBar";
+import ShortLinkNav from "./ShortLinkNav";
+import { MainCard } from "./cards/MainCard";
 
-export function UserAccount() {
+export function ShortenLinkPage() {
   return (
     <div className="h-screen overflow-hidden">
       <NavBar />
@@ -25,16 +22,13 @@ export function UserAccount() {
         <div className="border-[0.5px]"></div>
 
         <ResizablePanel defaultSize="75%">
-          <div className="h-full ">
+          <div className="h-full overflow-hidden ">
             <nav className="flex justify-between font-semibold border-b">
-              <AccountNav />
+              <ShortLinkNav />
             </nav>
-          </div>
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize="20%">
-          <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold">Profile</span>
+            <div className="flex justify-center pt-12 w-full h-full">
+              <MainCard />
+            </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
