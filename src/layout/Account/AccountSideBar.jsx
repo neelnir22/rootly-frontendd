@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-function SideBar() {
+function AccountSideBar() {
   const navigate = useNavigate();
   return (
     <>
@@ -22,4 +22,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default AccountSideBar;

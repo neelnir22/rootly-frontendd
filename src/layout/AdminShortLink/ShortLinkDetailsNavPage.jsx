@@ -1,7 +1,7 @@
 import { HiOutlineCog8Tooth } from "react-icons/hi2";
 import { useNavigate } from "react-router";
 
-function ShortLinkContent() {
+function ShortLinkDetailsNavPage() {
   const navigate = useNavigate();
   return (
     <>
@@ -14,4 +14,4 @@ function ShortLinkContent() {
   );
 }
 
-export default ShortLinkContent;
+export default ShortLinkDetailsNavPage;

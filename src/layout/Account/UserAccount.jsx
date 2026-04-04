@@ -4,7 +4,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import NavBar from "../NavBar/NavBar";
-import SideBar from "./SideBar";
+import AccountSideBar from "./AccountSideBar";
 import AccountNav from "./AccountNav";
 
 export function UserAccount() {
@@ -18,7 +18,7 @@ export function UserAccount() {
         <div>
           <div className="flex h-screen justify-center items-center p-6 pt-0">
             <div className="font-semibold flex-col ">
-              <SideBar />
+              <AccountSideBar />
             </div>
           </div>
         </div>

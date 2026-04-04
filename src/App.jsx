@@ -7,10 +7,11 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUp from "./pages/signup";
 import PageNotFound from "./pages/PageNotFound";
-import ShortLinkPage from "./pages/ShortLinkPage";
+import AdminShortLinksPage from "./pages/AdminShortLinksPage";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import AccountPage from "./pages/AccountPage";
 import SettingsPage from "./pages/SettingsPage";
+import CreateShortLinkPage from "./pages/CreateShortLinkPage";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "admin/link-shortner",
-    element: <ShortLinkPage />,
+    element: <AdminShortLinksPage />,
   },
   {
     path: "admin",
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "admin/settings",
     element: <SettingsPage />,
+  },
+  {
+    path: "short-link",
+    element: <CreateShortLinkPage />,
   },
   {
     path: "*",
