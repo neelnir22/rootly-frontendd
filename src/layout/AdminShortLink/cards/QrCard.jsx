@@ -4,7 +4,10 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export function QrCard() {
   return (
-    <AspectRatio ratio={1 / 1} className="w-80 h-80  rounded-lg bg-blue-800">
+    <AspectRatio
+      ratio={1 / 1}
+      className="w-80 h-80 grow rounded-lg bg-blue-800"
+    >
       {/* <img
         src="https://avatar.vercel.sh/shadcn1"
         alt="Photo"

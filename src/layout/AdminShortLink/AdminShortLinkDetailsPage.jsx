@@ -1,6 +1,6 @@
 import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import NavBar from "../NavBar/NavBar";
-import SideBar from "../Account/AccountSideBar";
+import AccountSideBar from "../Account/AccountSideBar";
 import ShortLinkDetailsNavPage from "./ShortLinkDetailsNavPage";
 import { MainCard } from "./cards/MainCard";
 
@@ -15,7 +15,7 @@ export function AdminShortLinkDetailsPage() {
         <div>
           <div className="flex h-screen justify-center items-center p-6 pt-0">
             <div className="font-semibold flex-col ">
-              <SideBar />
+              <AccountSideBar />
             </div>
           </div>
         </div>

@@ -8,7 +8,11 @@ function CardNav() {
         <li>Free, fast and simple link shortening with tr.ee by Linktree</li>
       </ul>
       <ul className="flex justify-center items-center">
-        <Button>Shorten Link</Button>
+        <Button>
+          <a href="/short-link" target="_blank" rel="noreferrer">
+            Shorten Link
+          </a>
+        </Button>
       </ul>
     </nav>
   );

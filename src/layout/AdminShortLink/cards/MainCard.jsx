@@ -15,7 +15,7 @@ export function MainCard() {
     >
       <CardNav />
       <div className=" grow grid grid-cols-2">
-        <div className="">
+        <div className="flex">
           <QrCard />
         </div>
         <div>
