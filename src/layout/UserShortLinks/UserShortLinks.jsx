@@ -27,7 +27,7 @@ export function UserShortLinks() {
             </nav>
 
             <div className="flex justify-center w-full h-full ">
-              <ProfileCard />
+              <ProfileCard type="shortlink" />
             </div>
           </div>
         </ResizablePanel>

@@ -33,7 +33,7 @@ export function UserAccount() {
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize="20%">
           <div className="flex h-full items-center justify-center p-6">
-            <ProfileCard />
+            <ProfileCard type="shortlink" />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
