@@ -21,3 +21,19 @@ export async function createLinkShort(link) {
   const data = await res.json();
   return { message: data.message, result: data.result };
 }
+
+export async function getAllShortLinkDetails() {
+  const res = await fetch(`${backendUrl}/get-short-links`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "Error creating short link");
+  }
+  const data = await res.json();
+  return data;
+}

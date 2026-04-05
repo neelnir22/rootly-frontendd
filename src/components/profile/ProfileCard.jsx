@@ -63,13 +63,20 @@ export default function ProfileCard({
                 />
               </div>
 
-              <p className="text-sm text-gray-500">@{username}</p>
+              <p className="text-sm text-black">@{username}</p>
             </div>
 
             <div className="mt-4 flex-1 overflow-y-auto flex flex-col gap-3 pr-1">
               {data.map((item, index) => (
+                // link, code
                 <div key={index}>
-                  {item ? <DescriptionCard type={type} /> : null}
+                  {item ? (
+                    <DescriptionCard
+                      type={type}
+                      link={item.link}
+                      code={item.code}
+                    />
+                  ) : null}
                 </div>
               ))}
             </div>

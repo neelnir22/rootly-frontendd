@@ -2,9 +2,14 @@ import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import AccountSideBar from "../Account/AccountSideBar";
 import UserShortLinkDetailsNavPage from "./UserShortLinkDetailsNavPage";
 import ProfileCard from "@/components/profile/ProfileCard";
-// import ShortLinkDetailsNavPage from "./ShortLinkDetailsNavPage";
+import { useGetAllUserShortLinks } from "@/authentication/useGetAllUserShortLinks";
 
 export function UserShortLinks() {
+  const { shortlinkdetails, isPending } = useGetAllUserShortLinks();
+
+  if (isPending) {
+    alert("ispending");
+  }
   return (
     <div className="h-screen overflow-hidden bg-gray-50 ">
       <ResizablePanelGroup
@@ -27,7 +32,12 @@ export function UserShortLinks() {
             </nav>
 
             <div className="flex justify-center w-full h-full ">
-              <ProfileCard type="shortlink" />
+              <ProfileCard
+                type="shortlink"
+                data={shortlinkdetails?.result.shortlinks.shortLinks}
+                username={shortlinkdetails?.result.userDetails.username}
+                imageUrl={shortlinkdetails?.result.userDetails.image}
+              />
             </div>
           </div>
         </ResizablePanel>
