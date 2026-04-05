@@ -12,6 +12,7 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 import AccountPage from "./pages/AccountPage";
 import SettingsPage from "./pages/SettingsPage";
 import CreateShortLinkPage from "./pages/CreateShortLinkPage";
+import UserShortLinksPage from "./pages/UserShortLinksPage";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "short-link",
     element: <CreateShortLinkPage />,
+  },
+  {
+    path: "admin/all-short-link",
+    element: <UserShortLinksPage />,
   },
   {
     path: "*",
