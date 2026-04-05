@@ -5,9 +5,9 @@ function ShortLinkDetailsNavPage() {
   const navigate = useNavigate();
   return (
     <>
-      <h1 className="flex items-center text-3xl pl-3">Shorten Links</h1>
+      <h1 className="flex items-center text-2xl pl-3">Link-Shortner</h1>
       <HiOutlineCog8Tooth
-        className="w-10 h-20"
+        className="w-10 h-16"
         onClick={() => navigate("/admin/settings")}
       />
     </>

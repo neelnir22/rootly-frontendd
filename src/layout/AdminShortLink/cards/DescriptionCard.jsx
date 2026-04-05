@@ -1,16 +1,24 @@
-// import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-
-export function DescriptionCard() {
+function DescriptionCard() {
   return (
-    <AspectRatio ratio={1 / 1} className="w-80 h-80 rounded-lg bg-pink-800">
-      {/* <img
-        src="https://avatar.vercel.sh/shadcn1"
-        alt="Photo"
-        fill
-        className="rounded-lg object-cover grayscale dark:brightness-10 absolute"
-      /> */}
-    </AspectRatio>
+    <div className="flex flex-col justify-center">
+      <img src="image-1.png" alt="img" className="flex justify-center" />
+      <h1 className="font-extrabold flex justify-center ">
+        Drive traffic effortlessly with short links
+      </h1>
+      <h1 className="flex justify-center">
+        Turn long URLs into compact, shareable links
+      </h1>
+      <h1 className="flex justify-center">for social media, ads and more.</h1>
+      <Button className="w-10px flex bg-red-400 hover:bg-red-400 hover:opacity-50 border-gray-700 border-[0.3px]">
+        <a href="/short-link" target="_blank" rel="noreferrer">
+          {" "}
+          Shorten-link
+        </a>
+      </Button>
+    </div>
   );
 }
+
+export default DescriptionCard;

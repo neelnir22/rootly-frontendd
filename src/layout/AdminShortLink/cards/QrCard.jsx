@@ -1,19 +1,25 @@
-// import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-
-export function QrCard() {
+function QrCard() {
   return (
-    <AspectRatio
-      ratio={1 / 1}
-      className="w-80 h-80 grow rounded-lg bg-blue-800"
-    >
-      {/* <img
-        src="https://avatar.vercel.sh/shadcn1"
-        alt="Photo"
-        fill
-        className="rounded-lg object-cover grayscale dark:brightness-10 absolute"
-      /> */}
-    </AspectRatio>
+    <div className="flex flex-col justify-center">
+      <img src="image-2.png" alt="img" className="flex justify-center" />
+      <h1 className="font-extrabold flex justify-center ">
+        Get a free QR code for every link
+      </h1>
+      <h1 className="flex justify-center">
+        Your QR code makes it easy to connect
+      </h1>
+      <h1 className="flex justify-center">
+        with your audience, online and offline.
+      </h1>
+      <Button className="w-10px flex bg-blue-400 hover:bg-blue-400 hover:opacity-50 border-gray-700 border-[0.3px]">
+        <a href="/short-link" target="_blank" rel="noreferrer">
+          Generate Qr Code
+        </a>
+      </Button>
+    </div>
   );
 }
+
+export default QrCard;

@@ -3,19 +3,17 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import NavBar from "../NavBar/NavBar";
 import AccountSideBar from "./AccountSideBar";
 import AccountNav from "./AccountNav";
 
 export function UserAccount() {
   return (
-    <div className="h-screen overflow-hidden">
-      <NavBar />
+    <div className="h-screen overflow-hidden  bg-gray-50">
       <ResizablePanelGroup
         orientation="horizontal"
         className="min-h-50 w-full "
       >
-        <div>
+        <div className="bg-gray-100">
           <div className="flex h-screen justify-center items-center p-6 pt-0">
             <div className="font-semibold flex-col ">
               <AccountSideBar />

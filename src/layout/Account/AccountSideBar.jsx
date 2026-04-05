@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 
 function AccountSideBar() {
@@ -5,7 +6,10 @@ function AccountSideBar() {
   return (
     <>
       <ul className="pb-3">
-        <li onClick={() => navigate("/admin")} className="cursor-pointer">
+        <li
+          onClick={() => navigate("/admin")}
+          className="cursor-pointer text-gray-500"
+        >
           Manage Links
         </li>
       </ul>
@@ -13,7 +17,7 @@ function AccountSideBar() {
       <ul className="pt-3">
         <li
           onClick={() => navigate("/admin/link-shortner")}
-          className="cursor-pointer"
+          className="cursor-pointer text-gray-500"
         >
           Link Shortner
         </li>
