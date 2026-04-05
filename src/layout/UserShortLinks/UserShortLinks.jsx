@@ -1,6 +1,7 @@
 import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import AccountSideBar from "../Account/AccountSideBar";
 import UserShortLinkDetailsNavPage from "./UserShortLinkDetailsNavPage";
+import ProfileCard from "@/components/profile/ProfileCard";
 // import ShortLinkDetailsNavPage from "./ShortLinkDetailsNavPage";
 
 export function UserShortLinks() {
@@ -24,7 +25,10 @@ export function UserShortLinks() {
             <nav className="flex justify-between font-semibold border-b-[0.5px]">
               <UserShortLinkDetailsNavPage />
             </nav>
-            <div className="flex justify-center w-full h-[85%] pt-12"></div>
+
+            <div className="flex justify-center w-full h-full ">
+              <ProfileCard />
+            </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

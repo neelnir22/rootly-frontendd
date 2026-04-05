@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/resizable";
 import AccountSideBar from "./AccountSideBar";
 import AccountNav from "./AccountNav";
+import ProfileCard from "@/components/profile/ProfileCard";
 
 export function UserAccount() {
   return (
@@ -32,7 +33,7 @@ export function UserAccount() {
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize="20%">
           <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold">Profile</span>
+            <ProfileCard />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
