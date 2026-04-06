@@ -13,6 +13,7 @@ import AccountPage from "./pages/AccountPage";
 import SettingsPage from "./pages/SettingsPage";
 import CreateShortLinkPage from "./pages/CreateShortLinkPage";
 import UserShortLinksPage from "./pages/UserShortLinksPage";
+import { EmailVerification } from "./pages/EmailVerification";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "admin/all-short-link",
     element: <UserShortLinksPage />,
+  },
+  {
+    path: "verify-email",
+    element: <EmailVerification />,
   },
   {
     path: "*",
