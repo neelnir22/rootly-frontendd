@@ -18,14 +18,17 @@ import {
 // import { manualEmailVerify, validateOtp } from "@/services/apiValidateOtp";
 import { RefreshCwIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useVerifyOtp } from "@/authentication/useVerifyOtp";
+import { useManualEmailVerify } from "@/authentication/useManualEmailVerify";
 
 export function EmailVerification() {
   const { register, handleSubmit } = useForm();
-  // const { verifyOtp } = useValidateOtp();
+  const { verifyotp } = useVerifyOtp();
+  const { manualemailverify } = useManualEmailVerify();
 
   function onSubmit(otp) {
     console.log(otp);
-    // verifyOtp(otp);
+    verifyotp(otp.otp);
   }
 
   function onError(error) {
@@ -50,7 +53,7 @@ export function EmailVerification() {
                 <Button
                   variant="outline"
                   size="xs"
-                  // onClick={}
+                  onClick={() => manualemailverify()}
                 >
                   <RefreshCwIcon />
                   Resend Code
