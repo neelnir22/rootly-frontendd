@@ -1,6 +1,7 @@
 // /* eslint-disable react-refresh/only-export-components */
 
 import { useGetUserProfile } from "@/authentication/useGetUserProfile";
+import { useUpdateUserNames } from "@/authentication/useUpdateUser-Name";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,8 +20,8 @@ import toast from "react-hot-toast";
 
 export function SettingForm() {
   const { userproile, isPending } = useGetUserProfile();
+  const { changenames } = useUpdateUserNames();
 
-  console.log({ userproile: userproile?.user });
   const [isDisabled, setIsDisabled] = useState(true);
 
   const {
@@ -47,9 +48,15 @@ export function SettingForm() {
 
   function onSubmit(data) {
     for (const [key] of Object.entries(dirtyFields)) {
-      if (key) {
-        console.log(key);
-        console.log(data[key]);
+      if (key === "firstName") {
+        changenames({
+          firstName: data[key === "firstName"] || data.firstName,
+        });
+      }
+      if (key === "lastName") {
+        changenames({
+          lastName: data[key === "lastName"] || data.lastName,
+        });
       }
     }
   }
