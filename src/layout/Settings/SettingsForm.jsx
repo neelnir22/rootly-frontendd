@@ -1,6 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+// /* eslint-disable react-refresh/only-export-components */
 
-import { useSignup } from "@/authentication/useSignup";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,60 +12,65 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
 
-export function SignUpForm() {
-  const { handleSubmit, register } = useForm();
-  const navigate = useNavigate();
-  const { signup, isPending } = useSignup();
+export function SettingForm() {
+  const [isDisabled, setIsDisabled] = useState(true);
+  const {
+    handleSubmit,
+    register,
+    formState: { dirtyFields },
+  } = useForm({
+    defaultValues: {
+      firstName: "neel",
+      lastName: "neel",
+      userName: "neelxn",
+      email: "neel2210@gmail.com",
+      password: "neelkutta",
+    },
+  });
 
   function onSubmit(data) {
-    signup(data);
+    for (const [key] of Object.entries(dirtyFields)) {
+      if (key) {
+        console.log(key);
+        console.log(data[key]);
+      }
+    }
   }
 
   function onError(err) {
+    console.log({ err });
     if (
       (err.firstName, err.lastName, err.userName, err.email || err.password)
     ) {
       toast.error(
-        err.firstName.message ||
-          err.lastName.message ||
-          err.userName.message ||
-          err.email.message ||
-          err.password.message,
+        err.firstName?.message ||
+          err.lastName?.message ||
+          err.userName?.message ||
+          err.email?.message ||
+          err.password?.message,
       );
     }
   }
 
-  // if (isPending) {
-  //   toast.loading("....creating user account");
-  // }
-
   return (
     <>
-      <h1 className=" flex justify-center pb-0 items-center">Rootly</h1>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-screen">
+        <h1 className=" flex justify-center items-center text-4xl font-bold pb-2">
+          Settings
+        </h1>
         <Card className="w-full max-w-sm ">
-          <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
-            <CardDescription>
-              Enter your email below to login to your account
-            </CardDescription>
-            <CardAction>
-              <Button variant="link" onClick={() => navigate("/login")}>
-                Login
-              </Button>
-            </CardAction>
-          </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit, onError)}>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                  <Label htmlFor="email">First Name</Label>
+                  <Label htmlFor="firstname">First Name</Label>
                   <Input
                     id="firstName"
+                    disabled={isDisabled}
                     {...register("firstName", {
                       required: {
                         value: true,
@@ -79,6 +83,7 @@ export function SignUpForm() {
                   <Label htmlFor="email">Last Name</Label>
                   <Input
                     id="lastName"
+                    disabled={isDisabled}
                     {...register("lastName", {
                       required: {
                         value: true,
@@ -91,6 +96,7 @@ export function SignUpForm() {
                   <Label htmlFor="email">UserName</Label>
                   <Input
                     id="userName"
+                    disabled={isDisabled}
                     {...register("userName", {
                       required: {
                         value: true,
@@ -104,6 +110,7 @@ export function SignUpForm() {
                   <Input
                     id="email"
                     type="email"
+                    disabled={isDisabled}
                     placeholder="m@example.com"
                     {...register("email", {
                       required: {
@@ -126,6 +133,7 @@ export function SignUpForm() {
                   <Input
                     id="password"
                     type="password"
+                    disabled={isDisabled}
                     {...register("password", {
                       required: {
                         value: true,
@@ -136,8 +144,12 @@ export function SignUpForm() {
                 </div>
               </div>
               <CardFooter className="flex-col gap-2 pt-3">
-                <Button type="submit" className="w-full">
-                  Sign Up
+                <Button
+                  type="submit"
+                  className="w-full"
+                  onClick={() => setIsDisabled((disabled) => !disabled)}
+                >
+                  {isDisabled ? "Edit" : "Save Changes"}
                 </Button>
               </CardFooter>
             </form>
