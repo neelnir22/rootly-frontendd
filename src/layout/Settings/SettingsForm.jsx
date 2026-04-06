@@ -1,5 +1,6 @@
 // /* eslint-disable react-refresh/only-export-components */
 
+import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,20 +18,32 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export function SettingForm() {
+  const { userproile, isPending } = useGetUserProfile();
+
+  console.log({ userproile: userproile?.user });
   const [isDisabled, setIsDisabled] = useState(true);
+
   const {
     handleSubmit,
     register,
     formState: { dirtyFields },
   } = useForm({
     defaultValues: {
-      firstName: "neel",
-      lastName: "neel",
-      userName: "neelxn",
-      email: "neel2210@gmail.com",
-      password: "neelkutta",
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
     },
+    values: userproile?.user,
   });
+
+  if (isPending) {
+    return (
+      <h1 className="w-full flex justify-center items-center text-5xl">
+        loading.....
+      </h1>
+    );
+  }
 
   function onSubmit(data) {
     for (const [key] of Object.entries(dirtyFields)) {
@@ -111,33 +124,10 @@ export function SettingForm() {
                     id="email"
                     type="email"
                     disabled={isDisabled}
-                    placeholder="m@example.com"
                     {...register("email", {
                       required: {
                         value: true,
                         message: "enter a email to login",
-                      },
-                    })}
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
-                    <a
-                      href=""
-                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                    >
-                      Forgot your password?
-                    </a>
-                  </div>
-                  <Input
-                    id="password"
-                    type="password"
-                    disabled={isDisabled}
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "enter password to login",
                       },
                     })}
                   />
