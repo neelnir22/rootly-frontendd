@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 
 function DescriptionCard() {
   return (
-    <div className="flex flex-col justify-center">
-      <img src="image-1.png" alt="img" className="flex justify-center" />
+    <div className="flex flex-col justify-center items-center">
+      <img src="/image-1.png" alt="img" className="flex justify-center w-60" />
       <h1 className="font-extrabold flex justify-center ">
         Drive traffic effortlessly with short links
       </h1>

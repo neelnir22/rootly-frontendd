@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 
 function StatsCard() {
   return (
-    <div className="flex flex-col justify-center">
-      <img src="image-2.png" alt="img" className="flex justify-center" />
+    <div className="flex flex-col justify-center items-center">
+      <img
+        src="/image-2.png"
+        alt="img"
+        className="flex justify-center items-center w-60"
+      />
       <h1 className="font-extrabold flex justify-center ">
         Monitor click stats in real time
       </h1>

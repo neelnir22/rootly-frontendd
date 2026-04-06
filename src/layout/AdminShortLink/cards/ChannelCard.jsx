@@ -3,8 +3,8 @@ import { useNavigate } from "react-router";
 
 function ChannelCard() {
   return (
-    <div className="flex flex-col justify-center">
-      <img src="image-3.png" alt="img" className="flex justify-center" />
+    <div className="flex flex-col justify-center items-center">
+      <img src="/image-3.png" alt="img" className="flex justify-center w-60" />
       <h1 className="font-extrabold flex justify-center ">
         Create links for each of your channels
       </h1>

@@ -25,22 +25,19 @@ export function MainCard() {
         </div>
 
         <div className="flex-1 grid grid-cols-2 gap-4 p-2">
-          {/* Card 1 */}
-          <div className="bg-red-400 rounded-xl">
+          <div className="bg-red-400 rounded-xl h-80">
             <DescriptionCard />
           </div>
 
-          <div className="bg-blue-400 rounded-xl">
+          <div className="bg-blue-400 rounded-xl h-80">
             <QrCard />
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-purple-400 rounded-xl">
+          <div className="bg-purple-400 rounded-xl h-80">
             <ChannelCard />
           </div>
 
-          {/* Card 4 */}
-          <div className="bg-green-400 rounded-xl">
+          <div className="bg-green-400 rounded-xl h-80">
             <StatsCard />
           </div>
         </div>

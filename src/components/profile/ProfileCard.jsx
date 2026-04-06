@@ -5,13 +5,15 @@ import randomColor from "randomcolor";
 import DescriptionCard from "@/layout/ShortLink/DescriptionCard";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 // link, code, title, image
 export default function ProfileCard({
   data = [],
   type,
-  username = "username",
-  imageUrl = "https://via.placeholder.com/100",
+  username,
+  isPending,
+  imageUrl,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("My Profile");
@@ -20,6 +22,9 @@ export default function ProfileCard({
 
   const navigate = useNavigate();
 
+  if (isPending) {
+    toast.success("profile is loading, please wait.....");
+  }
   return (
     <>
       {data.length === 0 ? (
