@@ -8,6 +8,7 @@ export function useVerifyOtp() {
     onSuccess({ token, message }) {
       toast.success(message);
       localStorage.removeItem("user_token");
+      window.location.href = "/admin";
       localStorage.setItem("user_token", token);
     },
   });

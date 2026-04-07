@@ -32,7 +32,8 @@ export async function getAllShortLinkDetails() {
   });
   if (!res.ok) {
     const err = await res.json();
-    toast.error(err.message || "Error creating short link");
+    toast.error(err.message || "Error getting short link");
+    return;
   }
   const data = await res.json();
   return data;

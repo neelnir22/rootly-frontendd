@@ -10,7 +10,7 @@ export function useSignup() {
     onSuccess(data) {
       localStorage.setItem("user_token", data.token);
       toast.success(data.message);
-      navigate("/admin");
+      navigate("/verify-email");
     },
   });
   return { signup, isPending };

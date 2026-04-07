@@ -22,7 +22,7 @@ export default function ProfileCard({
 
   const navigate = useNavigate();
 
-  if (isPending) {
+  if (data.length && isPending) {
     toast.success("profile is loading, please wait.....");
   }
   return (

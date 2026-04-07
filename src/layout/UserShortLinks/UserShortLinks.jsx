@@ -7,9 +7,6 @@ import { useGetAllUserShortLinks } from "@/authentication/useGetAllUserShortLink
 export function UserShortLinks() {
   const { shortlinkdetails, isPending } = useGetAllUserShortLinks();
 
-  // if (isPending) {
-  //   alert("ispending");
-  // }
   return (
     <div className="h-screen overflow-hidden bg-gray-50 ">
       <ResizablePanelGroup
