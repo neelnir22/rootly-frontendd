@@ -61,3 +61,23 @@ export async function updateUserEmail(email) {
   const data = await res.json();
   return data;
 }
+
+export async function updateUserUserName(userName) {
+  const res = await fetch(`${backendUrlProfile}/userName`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      userName: userName,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "something went wrong");
+    return;
+  }
+  const data = await res.json();
+  return data.message;
+}

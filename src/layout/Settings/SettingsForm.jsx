@@ -1,6 +1,7 @@
 // /* eslint-disable react-refresh/only-export-components */
 
-import { useChangeEmail } from "@/authentication/useChangeEmail";
+import { useChangeEmail } from "@/authentication/useUpdateUser-Email";
+import { useChangeUserName } from "@/authentication/useUpdateUser-UserName";
 import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 import { useUpdateUserNames } from "@/authentication/useUpdateUser-Name";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ export function SettingForm() {
   const { userproile, isPending } = useGetUserProfile();
   const { changenames } = useUpdateUserNames();
   const { changeemail } = useChangeEmail();
+  const { changeusername } = useChangeUserName();
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -62,6 +64,9 @@ export function SettingForm() {
       }
       if (key === "email") {
         changeemail(data["email"]);
+      }
+      if (key === "userName") {
+        changeusername(data["userName"]);
       }
     }
   }
