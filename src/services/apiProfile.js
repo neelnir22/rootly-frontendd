@@ -15,7 +15,7 @@ export async function getUserProfile() {
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
-    return "";
+    return;
   }
   const data = await res.json();
   return data;
@@ -36,7 +36,27 @@ export async function updateUserName(req) {
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
-    return "";
+    return;
+  }
+  const data = await res.json();
+  return data;
+}
+
+export async function updateUserEmail(email) {
+  const res = await fetch(`${backendUrlProfile}/email`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      email: email,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "something went wrong");
+    return;
   }
   const data = await res.json();
   return data;

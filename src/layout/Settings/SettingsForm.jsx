@@ -1,5 +1,6 @@
 // /* eslint-disable react-refresh/only-export-components */
 
+import { useChangeEmail } from "@/authentication/useChangeEmail";
 import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 import { useUpdateUserNames } from "@/authentication/useUpdateUser-Name";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,7 @@ import toast from "react-hot-toast";
 export function SettingForm() {
   const { userproile, isPending } = useGetUserProfile();
   const { changenames } = useUpdateUserNames();
+  const { changeemail } = useChangeEmail();
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -50,13 +52,16 @@ export function SettingForm() {
     for (const [key] of Object.entries(dirtyFields)) {
       if (key === "firstName") {
         changenames({
-          firstName: data[key === "firstName"] || data.firstName,
+          firstName: data["firstName"],
         });
       }
       if (key === "lastName") {
         changenames({
-          lastName: data[key === "lastName"] || data.lastName,
+          lastName: data["lastName"],
         });
+      }
+      if (key === "email") {
+        changeemail(data["email"]);
       }
     }
   }

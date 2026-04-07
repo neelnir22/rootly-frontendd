@@ -25,7 +25,7 @@ export async function signUp({
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
-    return "";
+    return;
   }
 
   const data = await res.json();
@@ -45,7 +45,7 @@ export async function login({ email, password }) {
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
-    return "";
+    return;
   }
 
   const data = await res.json();
@@ -64,7 +64,7 @@ export async function verifyOtp(otp) {
   if (!res.ok) {
     const err = await res.json();
     toast.error(err.message || "something went wrong");
-    return "";
+    return;
   }
 
   const data = await res.json();
