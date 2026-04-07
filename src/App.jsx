@@ -14,6 +14,7 @@ import SettingsPage from "./pages/SettingsPage";
 import CreateShortLinkPage from "./pages/CreateShortLinkPage";
 import UserShortLinksPage from "./pages/UserShortLinksPage";
 import { EmailVerification } from "./pages/EmailVerification";
+import ProtectedRoute from "./components/ui/protected-route";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
   },
   {
     path: "short-link",
-    element: <CreateShortLinkPage />,
+    element: (
+      <ProtectedRoute>
+        <CreateShortLinkPage />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: "admin/all-short-link",
