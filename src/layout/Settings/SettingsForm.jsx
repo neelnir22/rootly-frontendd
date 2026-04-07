@@ -21,8 +21,10 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useUserDeactivate } from "@/authentication/useUser-Deactivate";
 import { DeleteConfirmationModal } from "@/components/modal/DeleteConfirmationModal";
+import { useNavigate } from "react-router";
 
 export function SettingForm() {
+  const navigate = useNavigate();
   const { userproile, isPending } = useGetUserProfile();
   const { changenames } = useUpdateUserNames();
   const { changeemail } = useChangeEmail();
@@ -171,6 +173,9 @@ export function SettingForm() {
           </Button>
           <DeleteConfirmationModal />
           <Button>Download My Data</Button>
+          <Button onClick={() => navigate("/admin/update-password")}>
+            Update Password
+          </Button>
         </div>
       </div>
     </>

@@ -15,6 +15,7 @@ import CreateShortLinkPage from "./pages/CreateShortLinkPage";
 import UserShortLinksPage from "./pages/UserShortLinksPage";
 import { EmailVerification } from "./pages/EmailVerification";
 import ProtectedRoute from "./components/ui/protected-route";
+import UpdatePasswordPage from "./pages/UpdatePasswordPage";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "verify-email",
     element: <EmailVerification />,
+  },
+  {
+    path: "admin/update-password",
+    element: <UpdatePasswordPage />,
   },
   {
     path: "*",

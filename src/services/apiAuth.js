@@ -124,3 +124,23 @@ export async function deleteUser() {
     return;
   }
 }
+export async function updatePassword({ currentPassword, newPassword }) {
+  console.log({ currentPassword, newPassword });
+  const response = await fetch(`${backendUrl}/reset-password`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    }),
+  });
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message);
+  }
+  const data = await response.json();
+  return data.message;
+}
