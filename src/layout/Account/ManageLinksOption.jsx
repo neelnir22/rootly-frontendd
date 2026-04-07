@@ -8,10 +8,8 @@ import { HiOutlineChevronDown } from "react-icons/hi2";
 import { HiOutlineChevronUp } from "react-icons/hi2";
 
 import { useState } from "react";
-import { useNavigate } from "react-router";
 
 export function ManageLinksOption() {
-  const navigate = useNavigate();
   const [open, setOpen] = useState(true);
 
   return (

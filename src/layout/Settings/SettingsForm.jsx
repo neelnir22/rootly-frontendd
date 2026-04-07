@@ -89,14 +89,6 @@ export function SettingForm() {
     }
   }
 
-  function handleClick() {
-    // return (
-    //   <div>
-    //     <DeleteConfirmationModal />
-    //   </div>
-    // );
-    console.log("h");
-  }
   return (
     <>
       <div className="flex flex-col justify-center items-center h-screen">
