@@ -87,3 +87,40 @@ export async function manualEmailVerify() {
   const data = await response.json();
   toast.success(data.message);
 }
+
+export async function deactivateUser() {
+  const response = await fetch(`${backendUrl}/deactive-user`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    toast.error(err.message || "Something Went wrong");
+    return;
+  }
+  localStorage.removeItem("user_token");
+  const data = await response.json();
+
+  toast.success(data.message);
+  localStorage.setItem("user_token", data.token);
+}
+
+export async function deleteUser() {
+  const response = await fetch(`${backendUrl}/delete-user`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    toast.error(err.message || "Something Went wrong");
+    return;
+  }
+}

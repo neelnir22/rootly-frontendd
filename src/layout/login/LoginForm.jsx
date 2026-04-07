@@ -22,7 +22,6 @@ export function LoginForm() {
   const { login, isPending } = useLogin();
 
   function onSubmit(data) {
-    console.log(data);
     login(data);
   }
 

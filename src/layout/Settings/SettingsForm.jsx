@@ -19,12 +19,15 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useUserDeactivate } from "@/authentication/useUser-Deactivate";
+import { DeleteConfirmationModal } from "@/components/modal/DeleteConfirmationModal";
 
 export function SettingForm() {
   const { userproile, isPending } = useGetUserProfile();
   const { changenames } = useUpdateUserNames();
   const { changeemail } = useChangeEmail();
   const { changeusername } = useChangeUserName();
+  const { deactivateuser } = useUserDeactivate();
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -86,6 +89,14 @@ export function SettingForm() {
     }
   }
 
+  function handleClick() {
+    // return (
+    //   <div>
+    //     <DeleteConfirmationModal />
+    //   </div>
+    // );
+    console.log("h");
+  }
   return (
     <>
       <div className="flex flex-col justify-center items-center h-screen">
@@ -162,6 +173,13 @@ export function SettingForm() {
             </form>
           </CardContent>
         </Card>
+        <div className="pt-10">
+          <Button variant="destructive" onClick={deactivateuser}>
+            Deactivate
+          </Button>
+          <DeleteConfirmationModal />
+          <Button>Download My Data</Button>
+        </div>
       </div>
     </>
   );

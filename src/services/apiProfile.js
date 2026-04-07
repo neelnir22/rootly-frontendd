@@ -5,11 +5,12 @@ const backendUrlProfile = import.meta.env.VITE_BACKEND_URL_USERS_PROFILES;
 const token = localStorage.getItem("user_token");
 
 export async function getUserProfile() {
+  const userProfileToken = localStorage.getItem("user_token");
   const res = await fetch(`${backendUrlUser}/view-profile`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${userProfileToken}`,
     },
   });
   if (!res.ok) {
