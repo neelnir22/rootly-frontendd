@@ -29,11 +29,19 @@ export default function ProfileCard({
     <>
       {data.length === 0 ? (
         <div className="flex flex-col">
-          <h1 className="text-5xl pb-3">NO Short Links Created</h1>
-          <h1 className="text-5xl flex justify-center">Go Create One 😈</h1>
-          <Button onClick={() => navigate("/admin/link-shortner")}>
-            Create One !!!!
-          </Button>
+          <h1 className="text-5xl pb-3">
+            {type === "links"
+              ? "Add Links into your profile"
+              : "NO Short Links Created"}
+          </h1>
+          <h1 className="text-5xl flex justify-center">
+            {type === "links" ? "" : "Go Create One 😈"}
+          </h1>
+          {type === "shortlink" && (
+            <Button onClick={() => navigate("/admin/link-shortner")}>
+              Create One !!!!
+            </Button>
+          )}
         </div>
       ) : (
         <div className={`w-full flex justify-center items-center `}>

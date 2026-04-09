@@ -17,7 +17,7 @@ export default function DescriptionCard({ link, code, title, image, type }) {
             ? "w-120 bg-red-800 text-white rounded-xl px-2 py-[0.7%] flex items-center justify-between"
             : "w-full max-w-6xl text-white rounded-3xl px-8 py-6 flex items-center justify-between"
         }
-        style={{ backgroundColor: randomcolor }}
+        style={{ backgroundColor: type === "shortlinks" && randomcolor }}
       >
         <div className={type ? "flex flex-col" : "flex flex-col gap-3"}>
           <h1

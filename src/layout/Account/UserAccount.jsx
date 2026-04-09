@@ -8,6 +8,7 @@ import AccountNav from "./AccountNav";
 import ProfileCard from "@/components/profile/ProfileCard";
 import ProtectedRoute from "@/components/ui/protected-route";
 import { useDarkMode } from "@/context/DarkModeContext";
+import UserSmallProfile from "./UserProfile";
 
 export function UserAccount() {
   const { isDarkMode } = useDarkMode();
@@ -38,12 +39,13 @@ export function UserAccount() {
               <nav className="flex justify-between font-semibold border-b">
                 <AccountNav />
               </nav>
+              <UserSmallProfile />
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize="20%">
             <div className="flex h-full items-center justify-center p-6">
-              <ProfileCard type="shortlink" />
+              <ProfileCard type="links" />
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
