@@ -7,16 +7,24 @@ import AccountSideBar from "./AccountSideBar";
 import AccountNav from "./AccountNav";
 import ProfileCard from "@/components/profile/ProfileCard";
 import ProtectedRoute from "@/components/ui/protected-route";
+import { useDarkMode } from "@/context/DarkModeContext";
 
 export function UserAccount() {
+  const { isDarkMode } = useDarkMode();
   return (
     <ProtectedRoute>
-      <div className="h-screen overflow-hidden  bg-gray-50">
+      <div
+        className={
+          isDarkMode
+            ? `h-screen overflow-hidden  bg-black`
+            : `h-screen overflow-hidden  bg-gray-50`
+        }
+      >
         <ResizablePanelGroup
           orientation="horizontal"
           className="min-h-50 w-full "
         >
-          <div className="bg-gray-100">
+          <div className={isDarkMode ? "bg-black" : "bg-gray-100"}>
             <div className="flex h-screen justify-center items-center p-6 pt-0">
               <div className="font-semibold flex-col ">
                 <AccountSideBar />

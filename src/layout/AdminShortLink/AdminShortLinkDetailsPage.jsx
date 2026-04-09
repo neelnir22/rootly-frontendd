@@ -2,15 +2,23 @@ import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import AccountSideBar from "../Account/AccountSideBar";
 import ShortLinkDetailsNavPage from "./ShortLinkDetailsNavPage";
 import { MainCard } from "./cards/MainCard";
+import { useDarkMode } from "@/context/DarkModeContext";
 
 export function AdminShortLinkDetailsPage() {
+  const { isDarkMode } = useDarkMode();
   return (
-    <div className="h-screen overflow-hidden bg-gray-50 ">
+    <div
+      className={
+        isDarkMode
+          ? "h-screen overflow-hidden bg-black "
+          : "h-screen overflow-hidden bg-gray-50 "
+      }
+    >
       <ResizablePanelGroup
         orientation="horizontal"
         className="min-h-50 w-full rounded "
       >
-        <div className="bg-gray-100">
+        <div className={isDarkMode ? "bg-black" : "bg-gray-100"}>
           <div className="flex h-screen justify-center items-center p-6 pt-0">
             <div className="font-semibold flex-col ">
               <AccountSideBar />

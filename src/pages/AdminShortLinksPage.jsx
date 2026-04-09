@@ -4,7 +4,7 @@ import { AdminShortLinkDetailsPage } from "@/layout/AdminShortLink/AdminShortLin
 function AdminShortLinksPage() {
   return (
     <ProtectedRoute>
-      <AdminShortLinkDetailsPage />;
+      <AdminShortLinkDetailsPage />
     </ProtectedRoute>
   );
 }
