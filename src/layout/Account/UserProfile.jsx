@@ -13,15 +13,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DescriptionCard from "../ShortLink/DescriptionCard";
@@ -72,9 +63,11 @@ export default function UserSmallProfile({
       <AlertDialog>
         <AlertDialogTrigger
           render={
-            <Button variant="secondary" className="w-full">
-              + Add
-            </Button>
+            <div className="flex justify-center">
+              <Button variant="secondary" className="w-90">
+                + Add
+              </Button>
+            </div>
           }
         />
         <AlertDialogContent>

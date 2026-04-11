@@ -8,14 +8,16 @@ import {
 import { ManageLinksOption } from "@/layout/Account/ManageLinksOption";
 import { Button } from "./button";
 import { useNavigate } from "react-router";
+import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 
 export function AppSidebar() {
   const navigate = useNavigate();
+  const { userproile } = useGetUserProfile();
 
   return (
     <Sidebar>
       <SidebarHeader className="flex hover:rounded-2xl hover:bg-gray-700 p-2 items-center">
-        USER
+        {userproile?.user.userName}
       </SidebarHeader>
       <SidebarContent className="justify-center">
         <SidebarGroup className=" items-center">
@@ -27,7 +29,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <li
             onClick={() => navigate("/admin/link-shortner")}
-            className="cursor-pointer text-gray-500 flex  justify-center"
+            className="cursor-pointer text-black flex  justify-center"
           >
             Link Shortner
           </li>

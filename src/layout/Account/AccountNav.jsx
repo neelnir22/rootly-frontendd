@@ -7,7 +7,7 @@ function Content() {
   return (
     <>
       <h1 className="flex items-center text-2xl pl-3">Links</h1>
-      <div className="flex">
+      <div className="flex items-center">
         <NavToggleDarkMode />
         <HiOutlineCog8Tooth
           className="w-10 h-16"

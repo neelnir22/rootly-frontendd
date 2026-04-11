@@ -13,7 +13,6 @@ function ProtectedRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  console.log(decodedToken);
   if (decodedToken === null) {
     return <Spinner />;
   }
