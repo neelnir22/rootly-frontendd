@@ -14,24 +14,29 @@ export function ManageLinksOption() {
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <div className="flex justify-center items-center hover:bg-gray-200 w-35">
-        <CollapsibleTrigger>My Links</CollapsibleTrigger>
-        {open ? (
-          <HiOutlineChevronUp />
-        ) : (
-          <HiOutlineChevronDown className="flex items-center" />
-        )}
-      </div>
-      <CollapsibleContent>
-        <a href="/admin">Links</a>
-      </CollapsibleContent>
-      <CollapsibleContent>
-        <a href="/admin/all-short-link">Short Links</a>
-      </CollapsibleContent>
+      <div className="flex flex-col justify-center items-center w-full text-bold">
+        <CollapsibleTrigger className="hover:bg-gray-300 flex items-center">
+          My Links
+          <span>
+            {open ? (
+              <HiOutlineChevronUp />
+            ) : (
+              <HiOutlineChevronDown className="flex items-center" />
+            )}
+          </span>
+        </CollapsibleTrigger>
 
-      <CollapsibleContent>
-        <a href="/">Insigths</a>
-      </CollapsibleContent>
+        <CollapsibleContent>
+          <a href="/admin">Links</a>
+        </CollapsibleContent>
+        <CollapsibleContent>
+          <a href="/admin/all-short-link">Short Links</a>
+        </CollapsibleContent>
+
+        <CollapsibleContent>
+          <a href="/">Insigths</a>
+        </CollapsibleContent>
+      </div>
     </Collapsible>
   );
 }
