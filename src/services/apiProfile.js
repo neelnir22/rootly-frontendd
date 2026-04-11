@@ -100,6 +100,24 @@ export async function addLink(link) {
     return;
   }
   const data = await res.json();
-  console.log({ data });
+
+  return data;
+}
+
+export async function getUserLinks() {
+  const res = await fetch(`${backendUrlProfile}/get-links`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "something went wrong");
+    return;
+  }
+  const data = await res.json();
+
   return data;
 }

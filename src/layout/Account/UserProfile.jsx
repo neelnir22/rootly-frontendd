@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DescriptionCard from "../ShortLink/DescriptionCard";
 import { useAddLink } from "@/authentication/useUser-AddLink";
+import { useGetAllLinks } from "@/authentication/useUser-getAllLinks";
+import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 // import { useForm } from "react-hook-form";
 
 export default function UserSmallProfile({
@@ -24,13 +26,15 @@ export default function UserSmallProfile({
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const { addlink } = useAddLink();
+  const { allLinks } = useGetAllLinks();
+  const { userproile } = useGetUserProfile();
+  console.log(userproile);
 
   const linkRef = useRef();
 
   function handleClick() {
-    console.log("hey");
     const link = linkRef.current.value;
-    console.log({ link });
+
     addlink(link);
     linkRef.current.value = "";
   }
@@ -40,17 +44,17 @@ export default function UserSmallProfile({
         {/* Left: Image */}
         <div className="w-20 h-20 rounded-full overflow-hidden bg-blue-500">
           <img
-            src={imageUrl}
+            src="/blank-image.jpg"
             alt="profile"
             className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="flex items-center gap-2 flex-1 bg-green-500 w-20">
+        <div className="flex items-center gap-2 flex-1 w-20">
           <div className="flex flex-col flex-1 gap-2">
             <input
               type="text"
-              value={"username"}
+              value={userproile?.user.userName}
               disabled={!isEditing}
               onClick={() => setIsEditing((edit) => !edit)}
               className={`text-sm font-medium outline-none ${
@@ -105,7 +109,17 @@ export default function UserSmallProfile({
       </AlertDialog>
       <div className="w-full">
         {/* link, code, title, image, type */}
-        <DescriptionCard type="links" />
+        {allLinks?.links.map((obj) => {
+          return (
+            <DescriptionCard
+              type="links"
+              link={obj.link}
+              code={obj.shortCode}
+              title={obj.shortLink.title}
+              image={obj.shortLink.image}
+            />
+          );
+        })}
       </div>
     </>
   );

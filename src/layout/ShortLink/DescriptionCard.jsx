@@ -20,25 +20,39 @@ export default function DescriptionCard({ link, code, title, image, type }) {
         style={{ backgroundColor: type === "shortlinks" && randomcolor }}
       >
         <div className={type ? "flex flex-col" : "flex flex-col gap-3"}>
-          <h1
-            className={type ? "font-semibold" : "text-3xl font-semibold"}
-          >{`127.0.0.1:3000/s/${code}`}</h1>
+          {!(type === "links") && (
+            <h1
+              className={type ? "font-semibold" : "text-3xl font-semibold"}
+            >{`127.0.0.1:3000/s/${code}`}</h1>
+          )}
           {!type && <h1 className="text-xl font-semibold">{title}</h1>}
-          <p className="text-sm text-white break-all">{link}</p>
+          <a
+            href={`${link}`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-white break-all"
+          >
+            {link}
+          </a>
         </div>
 
         <div className="flex items-center gap-6">
-          <button
-            onClick={handleCopy}
-            className="w-14 h-14 flex items-center justify-center border border-red-300 rounded-full hover:bg-red-700 transition"
-          >
-            <Copy size={type ? 10 : 20} />
-          </button>
+          {!(type === "links") && (
+            <button
+              onClick={handleCopy}
+              className="w-14 h-14 flex items-center justify-center border border-red-300 rounded-full hover:bg-red-700 transition"
+            >
+              <Copy size={type ? 10 : 20} />
+            </button>
+          )}
 
-          {!type && (
-            <div className="w-26 h-26 bg-white rounded-md flex items-center justify-center">
-              <img src={`${image}`} alt="image" className="h-26" />
-              <div className="w-12 h-12 bg-black opacity-80"></div>
+          {!(type === "shortlink") && (
+            <div className="w-26 h-26 rounded-md flex items-center justify-center">
+              {image ? (
+                <img src={`${image}`} alt="image" className="h-26" />
+              ) : (
+                "image not found"
+              )}
             </div>
           )}
         </div>

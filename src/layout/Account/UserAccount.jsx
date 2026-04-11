@@ -9,9 +9,13 @@ import ProfileCard from "@/components/profile/ProfileCard";
 import ProtectedRoute from "@/components/ui/protected-route";
 import { useDarkMode } from "@/context/DarkModeContext";
 import UserSmallProfile from "./UserProfile";
+import { useGetAllLinks } from "@/authentication/useUser-getAllLinks";
 
 export function UserAccount() {
   const { isDarkMode } = useDarkMode();
+
+  const { allLinks } = useGetAllLinks();
+
   return (
     <ProtectedRoute>
       <div
@@ -43,7 +47,7 @@ export function UserAccount() {
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize="20%">
             <div className="flex h-full items-center justify-center p-6">
-              <ProfileCard type="links" />
+              <ProfileCard type="links" data={allLinks?.links} />
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>

@@ -6,16 +6,12 @@ import DescriptionCard from "@/layout/ShortLink/DescriptionCard";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 
 // link, code, title, image
-export default function ProfileCard({
-  data = [],
-  type,
-  username,
-  isPending,
-  imageUrl,
-}) {
-  const [isEditing, setIsEditing] = useState(false);
+export default function ProfileCard({ data = [], type, username, isPending }) {
+  const [isEditing] = useState(false);
+  const { userproile } = useGetUserProfile();
   const [title, setTitle] = useState("My Profile");
 
   const randomcolor = randomColor();
@@ -52,7 +48,7 @@ export default function ProfileCard({
             <div className="flex flex-col items-center gap-3">
               <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300">
                 <img
-                  src={imageUrl}
+                  src="/blank-image.jpg"
                   alt="profile"
                   className="w-full h-full object-cover"
                 />
@@ -66,14 +62,10 @@ export default function ProfileCard({
                     className="border-b outline-none text-center"
                   />
                 ) : (
-                  <h2 className="text-lg font-semibold">{title}</h2>
+                  <h2 className="text-lg font-semibold">
+                    {userproile?.user.userName}
+                  </h2>
                 )}
-
-                <Pencil
-                  size={16}
-                  className="cursor-pointer"
-                  onClick={() => setIsEditing(!isEditing)}
-                />
               </div>
 
               <p className="text-sm text-black">@{username}</p>
@@ -86,8 +78,9 @@ export default function ProfileCard({
                   {item ? (
                     <DescriptionCard
                       type={type}
-                      link={item.link}
-                      code={item.code}
+                      link={item?.link}
+                      code={item?.code}
+                      image={item?.shortLink?.image}
                     />
                   ) : null}
                 </div>
