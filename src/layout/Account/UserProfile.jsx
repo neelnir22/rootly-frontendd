@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Pencil } from "lucide-react";
 import {
   AlertDialog,
@@ -16,13 +16,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DescriptionCard from "../ShortLink/DescriptionCard";
+import { useAddLink } from "@/authentication/useUser-AddLink";
 // import { useForm } from "react-hook-form";
 
 export default function UserSmallProfile({
   imageUrl = "https://via.placeholder.com/40",
 }) {
   const [isEditing, setIsEditing] = useState(false);
+  const { addlink } = useAddLink();
 
+  const linkRef = useRef();
+
+  function handleClick() {
+    console.log("hey");
+    const link = linkRef.current.value;
+    console.log({ link });
+    addlink(link);
+    linkRef.current.value = "";
+  }
   return (
     <>
       <div className="w-[80%] flex items-center justify-between gap-4 p-2 h-40">
@@ -86,12 +97,14 @@ export default function UserSmallProfile({
           <Input
             id="link"
             type="link"
+            ref={linkRef}
             placeholder="https://www.your-link.com"
           />
-          <Button>Add</Button>
+          <Button onClick={handleClick}>Add</Button>
         </AlertDialogContent>
       </AlertDialog>
       <div className="w-full">
+        {/* link, code, title, image, type */}
         <DescriptionCard type="links" />
       </div>
     </>

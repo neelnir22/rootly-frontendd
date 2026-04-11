@@ -82,3 +82,24 @@ export async function updateUserUserName(userName) {
   const data = await res.json();
   return data.message;
 }
+
+export async function addLink(link) {
+  const res = await fetch(`${backendUrlProfile}/add-links`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      links: link,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    toast.error(err.message || "something went wrong");
+    return;
+  }
+  const data = await res.json();
+  console.log({ data });
+  return data;
+}
