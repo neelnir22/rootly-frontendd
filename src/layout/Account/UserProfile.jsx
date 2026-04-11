@@ -40,14 +40,15 @@ export default function UserSmallProfile({
   }
   return (
     <>
-      <div className="w-[80%] flex items-center justify-between gap-4 p-2 h-40">
-        {/* Left: Image */}
-        <div className="w-20 h-20 rounded-full overflow-hidden bg-blue-500">
-          <img
-            src="/blank-image.jpg"
-            alt="profile"
-            className="w-full h-full object-cover"
-          />
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-full flex object-cover gap-4 p-2 h-40">
+          <div className="w-20 h-20 rounded-full overflow-hidden bg-blue-500">
+            <img
+              src="/blank-image.jpg"
+              alt="profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         <div className="flex items-center gap-2 flex-1 w-20">

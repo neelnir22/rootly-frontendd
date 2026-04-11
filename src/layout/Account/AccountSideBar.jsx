@@ -7,6 +7,7 @@ export default function AccountSideBar() {
   return (
     <SidebarProvider>
       <AppSidebar />
+
       <main className="flex flex-col gap-4">
         <SidebarTrigger />
         <SidebarTrigger type="links" />
