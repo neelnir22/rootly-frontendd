@@ -1,16 +1,31 @@
 function NavLinks() {
   return (
-    <div className="flex">
-      <ul className="flex items-center gap-4">
-        <a href="" className="p-2 opacity-25 hover:opacity-100">
-          Features
-        </a>
-        <a href="" className="p-2 opacity-25 hover:opacity-100">
-          Pricing
-        </a>
-        <a href="" className="p-2 opacity-25 hover:opacity-100">
-          About
-        </a>
+    <div className="flex items-center">
+      <ul className="flex items-center gap-8">
+        <li>
+          <a
+            href="#features"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Features
+          </a>
+        </li>
+        <li>
+          <a
+            href="#pricing"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a
+            href="#use-cases"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Use Cases
+          </a>
+        </li>
       </ul>
     </div>
   );

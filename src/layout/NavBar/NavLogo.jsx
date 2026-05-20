@@ -1,17 +1,14 @@
-import { useDarkMode } from "@/context/DarkModeContext";
+import { Link as LinkIcon } from "lucide-react";
 
 function NavLogo() {
-  const { isDarkMode } = useDarkMode();
   return (
-    <a
-      href="/"
-      className={
-        isDarkMode
-          ? "font-bold text-white pl-5 flex justify-center items-center"
-          : "font-bold text-gray-800 pl-5 flex justify-center items-center"
-      }
-    >
-      Rootly
+    <a href="/" className="flex items-center gap-2 group">
+      <div className="w-10 h-10 bg-gradient-to-tr from-primary-indigo to-primary-violet rounded-xl flex items-center justify-center shadow-lg shadow-primary-indigo/20 group-hover:scale-105 transition-transform">
+        <LinkIcon className="text-white w-6 h-6" />
+      </div>
+      <span className="text-xl font-bold font-heading tracking-tight text-foreground">
+        Rootly
+      </span>
     </a>
   );
 }
