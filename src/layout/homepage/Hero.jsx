@@ -35,11 +35,6 @@ const Hero = () => {
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-violet/10 blur-[100px] rounded-full pointer-events-none animate-pulse"></div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-indigo/10 border border-primary-indigo/20 text-primary-indigo text-xs font-semibold mb-6 animate-fade-in">
-          <Zap size={14} />
-          <span>The next-gen link management platform</span>
-        </div>
-
         <h1 className="text-5xl md:text-7xl font-extrabold font-heading tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up">
           One Link. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-indigo to-primary-violet">
@@ -98,21 +93,6 @@ const Hero = () => {
               </Button>
             </div>
           )}
-        </div>
-
-        <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Shield size={16} />
-            <span>GDPR Compliant</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Zap size={16} />
-            <span>Lightning Fast</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Globe size={16} />
-            <span>Custom Domains</span>
-          </div>
         </div>
       </div>
     </section>
