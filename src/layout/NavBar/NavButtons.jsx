@@ -35,7 +35,7 @@ function NavButtons() {
         <>
           <Button
             variant="ghost"
-            className="text-sm font-medium hover:bg-transparent hover:text-primary-indigo transition-colors"
+            className="bg-gradient-to-r from-primary-indigo to-primary-violet hover:opacity-90 text-white border-0 shadow-lg shadow-primary-indigo/20 px-6 rounded-full transition-all hover:scale-105 active:scale-95"
             onClick={() => navigate("/login")}
           >
             Log In
