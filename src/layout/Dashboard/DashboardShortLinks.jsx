@@ -106,7 +106,7 @@ export default function DashboardShortLinks() {
               shorten a link to see it here and start tracking performance.
             </p>
             <Button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/short-link")}
               className="bg-primary-violet hover:bg-primary-indigo text-white px-8 py-6 rounded-xl font-bold shadow-lg shadow-primary-violet/20 transition-all hover:scale-105 active:scale-95"
             >
               <Link2 className="w-5 h-5 mr-2" />

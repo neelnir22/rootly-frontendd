@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export function DeleteConfirmationModal() {
+export function DeleteConfirmationModal({ trigger }) {
   const { deleteuser } = useDeleteUser();
   return (
     <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="destructive">Delete</Button>}
-      />
+      <AlertDialogTrigger asChild>
+        {trigger || <Button variant="destructive">Delete</Button>}
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
