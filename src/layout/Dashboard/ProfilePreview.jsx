@@ -11,11 +11,16 @@ export default function ProfilePreview({ activeTab }) {
 
   const linksToShow =
     activeTab === "short-links"
-      ? shortlinkdetails?.result?.map((l) => ({
+      ? (Array.isArray(shortlinkdetails?.result)
+          ? shortlinkdetails.result
+          : []
+        ).map((l) => ({
           ...l,
-          shortLink: { title: l.link.substring(0, 20) + "..." },
+          displayTitle: l.link?.substring(0, 20) + "...",
         }))
-      : allLinks?.links;
+      : Array.isArray(allLinks?.links)
+        ? allLinks.links
+        : [];
 
   return (
     <div className="h-full flex flex-col items-center p-8 bg-muted/30 border-l border-border/50">
@@ -64,7 +69,7 @@ export default function ProfilePreview({ activeTab }) {
                 >
                   <span className="text-sm font-bold text-foreground group-hover:text-white truncate pr-4">
                     {activeTab === "short-links"
-                      ? link.shortCode || "Short Link"
+                      ? link.shortCode || link.displayTitle
                       : link.shortLink?.title || "Link Title"}
                   </span>
                   <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-white shrink-0" />

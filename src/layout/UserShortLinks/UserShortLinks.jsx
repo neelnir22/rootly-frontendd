@@ -38,9 +38,9 @@ export function UserShortLinks() {
             <div className="flex justify-center w-full h-full ">
               <ProfileCard
                 type="shortlink"
-                data={shortlinkdetails?.result.shortlinks.shortLinks}
-                username={shortlinkdetails?.result.userDetails.username}
-                imageUrl={shortlinkdetails?.result.userDetails.image}
+                data={shortlinkdetails?.result?.shortlinks?.shortLinks || []}
+                username={shortlinkdetails?.result?.userDetails?.username}
+                imageUrl={shortlinkdetails?.result?.userDetails?.image}
                 isPending={isPending}
               />
             </div>

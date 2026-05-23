@@ -92,12 +92,9 @@ export function SettingForm() {
   }
 
   return (
-    <>
-      <div className="flex flex-col justify-center items-center h-screen">
-        <h1 className=" flex justify-center items-center text-4xl font-bold pb-2">
-          Settings
-        </h1>
-        <Card className="w-full max-w-sm ">
+    <div className="max-w-4xl mx-auto py-8">
+      <div className="flex flex-col gap-8">
+        <Card className="w-full border-border/50 shadow-sm">
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit, onError)}>
               <div className="flex flex-col gap-6">
@@ -178,6 +175,6 @@ export function SettingForm() {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

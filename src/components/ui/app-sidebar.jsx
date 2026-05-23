@@ -12,7 +12,7 @@ import { Home, Link2, BarChart3, Settings, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useGetUserProfile } from "@/authentication/useGetUserProfile";
 
-export function AppSidebar({ activeTab, setActiveTab }) {
+export function AppSidebar({ activeTab }) {
   const navigate = useNavigate();
   const { userproile } = useGetUserProfile();
 
@@ -22,10 +22,25 @@ export function AppSidebar({ activeTab, setActiveTab }) {
   }
 
   const menuItems = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "short-links", label: "Short Links", icon: Link2 },
-    { id: "analytics", label: "Analytics", icon: BarChart3 },
-    { id: "settings", label: "Settings", icon: Settings },
+    { id: "home", label: "Home", icon: Home, path: "/admin" },
+    {
+      id: "short-links",
+      label: "Short Links",
+      icon: Link2,
+      path: "/admin/short-links",
+    },
+    {
+      id: "analytics",
+      label: "Analytics",
+      icon: BarChart3,
+      path: "/admin/analytics",
+    },
+    {
+      id: "settings",
+      label: "Settings",
+      icon: Settings,
+      path: "/admin/settings",
+    },
   ];
 
   return (
@@ -47,7 +62,7 @@ export function AppSidebar({ activeTab, setActiveTab }) {
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.id}>
                 <SidebarMenuButton
-                  onClick={() => setActiveTab(item.id)}
+                  onClick={() => navigate(item.path)}
                   isActive={activeTab === item.id}
                   className={`flex items-center gap-3 px-4 py-6 rounded-xl transition-all duration-200 ${
                     activeTab === item.id
@@ -55,7 +70,9 @@ export function AppSidebar({ activeTab, setActiveTab }) {
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
-                  <item.icon className={`w-5 h-5 ${activeTab === item.id ? "text-primary-indigo" : ""}`} />
+                  <item.icon
+                    className={`w-5 h-5 ${activeTab === item.id ? "text-primary-indigo" : ""}`}
+                  />
                   <span className="text-base">{item.label}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>

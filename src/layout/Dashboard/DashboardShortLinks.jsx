@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
 import { useGetAllUserShortLinks } from "@/authentication/useGetAllUserShortLinks";
 import { Link2, Copy, ExternalLink, BarChart2, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router";
 
 export default function DashboardShortLinks() {
   const { shortlinkdetails, isPending } = useGetAllUserShortLinks();
+  const navigate = useNavigate();
+  const links = Array.isArray(shortlinkdetails?.result)
+    ? shortlinkdetails.result
+    : [];
 
   const handleCopy = (url) => {
     navigator.clipboard.writeText(url);
@@ -23,8 +29,8 @@ export default function DashboardShortLinks() {
       </div>
 
       <div className="grid grid-cols-1 gap-4">
-        {shortlinkdetails?.result?.map((link, idx) => (
-          <div 
+        {links.map((link, idx) => (
+          <div
             key={idx}
             className="group p-6 bg-card border border-border/50 rounded-2xl hover:border-primary-violet/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary-violet/5"
           >
@@ -43,20 +49,20 @@ export default function DashboardShortLinks() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1 bg-muted/50 rounded-lg px-3 py-2 text-sm font-mono text-primary-violet truncate border border-border/50">
                     {link.shortLink}
                   </div>
-                  <button 
+                  <button
                     onClick={() => handleCopy(link.shortLink)}
                     className="p-2 hover:bg-primary-violet/10 text-muted-foreground hover:text-primary-violet rounded-lg transition-all"
                   >
                     <Copy className="w-4 h-4" />
                   </button>
-                  <a 
-                    href={link.shortLink} 
-                    target="_blank" 
+                  <a
+                    href={link.shortLink}
+                    target="_blank"
                     rel="noreferrer"
                     className="p-2 hover:bg-primary-violet/10 text-muted-foreground hover:text-primary-violet rounded-lg transition-all"
                   >
@@ -67,8 +73,12 @@ export default function DashboardShortLinks() {
 
               <div className="flex md:flex-col items-center justify-between md:justify-center gap-4 md:border-l border-border/50 md:pl-8">
                 <div className="text-center">
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Views</p>
-                  <p className="text-2xl font-black text-foreground">{link.views || 0}</p>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">
+                    Views
+                  </p>
+                  <p className="text-2xl font-black text-foreground">
+                    {link.views || 0}
+                  </p>
                 </div>
                 <div className="flex gap-2">
                   <button className="p-2 text-muted-foreground hover:text-primary-violet hover:bg-primary-violet/10 rounded-xl transition-all">
@@ -83,22 +93,35 @@ export default function DashboardShortLinks() {
           </div>
         ))}
 
-        {(!shortlinkdetails?.result || shortlinkdetails.result.length === 0) && !isPending && (
-          <div className="py-20 text-center bg-muted/20 border border-dashed border-border rounded-3xl">
+        {links.length === 0 && !isPending && (
+          <div className="py-20 text-center bg-muted/20 border border-dashed border-border rounded-3xl flex flex-col items-center">
             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
               <Link2 className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-bold text-foreground mb-2">No short links yet</h3>
-            <p className="text-muted-foreground max-w-xs mx-auto">
-              Shorten your first link from the home page or tools.
+            <h3 className="text-lg font-bold text-foreground mb-2">
+              It's cheating!
+            </h3>
+            <p className="text-muted-foreground max-w-xs mx-auto mb-6">
+              You don't have any short links or analytics yet. You need to
+              shorten a link to see it here and start tracking performance.
             </p>
+            <Button
+              onClick={() => navigate("/")}
+              className="bg-primary-violet hover:bg-primary-indigo text-white px-8 py-6 rounded-xl font-bold shadow-lg shadow-primary-violet/20 transition-all hover:scale-105 active:scale-95"
+            >
+              <Link2 className="w-5 h-5 mr-2" />
+              Shorten Your First Link
+            </Button>
           </div>
         )}
 
         {isPending && (
           <div className="space-y-4">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="w-full h-32 bg-muted animate-pulse rounded-2xl" />
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="w-full h-32 bg-muted animate-pulse rounded-2xl"
+              />
             ))}
           </div>
         )}

@@ -10,7 +10,16 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { TrendingUp, Users, MousePointer2, ArrowUpRight } from "lucide-react";
+import {
+  TrendingUp,
+  Users,
+  MousePointer2,
+  ArrowUpRight,
+  BarChart3,
+  Plus,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -30,9 +39,57 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function DashboardAnalytics() {
-  const { shortlinkdetails } = useGetAllUserShortLinks();
+  const { shortlinkdetails, isPending } = useGetAllUserShortLinks();
+  const navigate = useNavigate();
 
-  const links = shortlinkdetails?.result || [];
+  const links = Array.isArray(shortlinkdetails?.result)
+    ? shortlinkdetails.result
+    : [];
+
+  if (links.length === 0 && !isPending) {
+    return (
+      <div className="max-w-6xl mx-auto space-y-8 pb-12">
+        <div>
+          <h2 className="text-3xl font-extrabold font-heading text-foreground tracking-tight">
+            Analytics
+          </h2>
+          <p className="text-muted-foreground font-medium">
+            Track your link performance and engagement
+          </p>
+        </div>
+
+        <div className="py-24 text-center bg-muted/20 border border-dashed border-border rounded-[3rem] flex flex-col items-center">
+          <div className="w-20 h-20 bg-muted rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <BarChart3 className="w-10 h-10 text-muted-foreground" />
+          </div>
+          <h3 className="text-2xl font-bold text-foreground mb-3">
+            It's cheating!
+          </h3>
+          <p className="text-muted-foreground max-w-sm mx-auto mb-10 leading-relaxed">
+            You don't have any links or short links yet, so we can't show any
+            analytics. Add or shorten a link first to start tracking!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              onClick={() => navigate("/admin")}
+              className="bg-primary-indigo hover:bg-primary-violet text-white px-8 py-6 rounded-xl font-bold shadow-lg shadow-primary-indigo/20 transition-all hover:scale-105 active:scale-95"
+            >
+              <Plus className="w-5 h-5 mr-2" />
+              Add Your First Link
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate("/")}
+              className="border-border hover:bg-muted text-foreground px-8 py-6 rounded-xl font-bold transition-all"
+            >
+              Shorten a Link
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const totalViews = links.reduce((acc, curr) => acc + (curr.views || 0), 0);
 
   // Sort links by views for the ranking and chart

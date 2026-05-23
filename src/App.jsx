@@ -17,6 +17,10 @@ import { EmailVerification } from "./pages/EmailVerification";
 import ProtectedRoute from "./components/ui/protected-route";
 import UpdatePasswordPage from "./pages/UpdatePasswordPage";
 
+import DashboardHome from "./layout/Dashboard/DashboardHome";
+import DashboardShortLinks from "./layout/Dashboard/DashboardShortLinks";
+import DashboardAnalytics from "./layout/Dashboard/DashboardAnalytics";
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -33,22 +37,44 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
+    path: "admin",
+    element: (
+      <ProtectedRoute>
+        <AccountPage />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "short-links",
+        element: <DashboardShortLinks />,
+      },
+      {
+        path: "analytics",
+        element: <DashboardAnalytics />,
+      },
+      {
+        path: "settings",
+        element: <SettingsPage />,
+      },
+      {
+        path: "update-password",
+        element: <UpdatePasswordPage />,
+      },
+    ],
+  },
+  {
     path: "admin/link-shortner",
     element: <AdminShortLinksPage />,
-  },
-  {
-    path: "admin",
-    element: <AccountPage />,
-  },
-  {
-    path: "admin/settings",
-    element: <SettingsPage />,
   },
   {
     path: "short-link",
     element: (
       <ProtectedRoute>
-        <CreateShortLinkPage />,
+        <CreateShortLinkPage />
       </ProtectedRoute>
     ),
   },
@@ -59,10 +85,6 @@ const router = createBrowserRouter([
   {
     path: "verify-email",
     element: <EmailVerification />,
-  },
-  {
-    path: "admin/update-password",
-    element: <UpdatePasswordPage />,
   },
   {
     path: "*",

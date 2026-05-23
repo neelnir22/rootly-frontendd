@@ -1,7 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import { useGetAllLinks } from "@/authentication/useUser-getAllLinks";
 import { useAddLink } from "@/authentication/useUser-AddLink";
-import { Plus, Link as LinkIcon, Trash2, Edit2, GripVertical } from "lucide-react";
+import {
+  Plus,
+  Link as LinkIcon,
+  Trash2,
+  Edit2,
+  GripVertical,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
@@ -42,11 +48,15 @@ export default function DashboardHome() {
               className="pl-10 py-5 w-64 md:w-80 bg-card border-border rounded-xl focus:ring-primary-indigo/20 transition-all"
             />
           </div>
-          <Button 
+          <Button
             disabled={isAdding}
             className="bg-primary-indigo hover:bg-primary-violet text-white px-6 py-5 rounded-xl font-bold shadow-lg shadow-primary-indigo/20 transition-all hover:scale-105 active:scale-95"
           >
-            {isAdding ? <Plus className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5 mr-2" />}
+            {isAdding ? (
+              <Plus className="w-5 h-5 animate-spin" />
+            ) : (
+              <Plus className="w-5 h-5 mr-2" />
+            )}
             Add Link
           </Button>
         </form>
@@ -54,14 +64,14 @@ export default function DashboardHome() {
 
       <div className="space-y-4">
         {allLinks?.links?.map((link, idx) => (
-          <div 
+          <div
             key={idx}
             className="group relative flex items-center gap-4 p-6 bg-card border border-border/50 rounded-2xl hover:border-primary-indigo/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary-indigo/5"
           >
             <div className="cursor-grab active:cursor-grabbing text-muted-foreground/30 hover:text-muted-foreground transition-colors">
               <GripVertical className="w-5 h-5" />
             </div>
-            
+
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <h4 className="font-bold text-foreground truncate">
@@ -88,21 +98,34 @@ export default function DashboardHome() {
         ))}
 
         {(!allLinks?.links || allLinks.links.length === 0) && !isPending && (
-          <div className="py-20 text-center bg-muted/20 border border-dashed border-border rounded-3xl">
+          <div className="py-20 text-center bg-muted/20 border border-dashed border-border rounded-3xl flex flex-col items-center">
             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
               <LinkIcon className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-bold text-foreground mb-2">No links yet</h3>
-            <p className="text-muted-foreground max-w-xs mx-auto">
-              Start by adding your first link using the form above.
+            <h3 className="text-lg font-bold text-foreground mb-2">
+              It's cheating!
+            </h3>
+            <p className="text-muted-foreground max-w-xs mx-auto mb-6">
+              You don't have any links or analytics yet. You need to add a link
+              to see it here and start building your profile.
             </p>
+            <Button
+              onClick={() => linkRef.current?.focus()}
+              className="bg-primary-indigo hover:bg-primary-violet text-white px-8 py-6 rounded-xl font-bold shadow-lg shadow-primary-indigo/20 transition-all hover:scale-105 active:scale-95"
+            >
+              <Plus className="w-5 h-5 mr-2" />
+              Add Your First Link
+            </Button>
           </div>
         )}
 
         {isPending && (
           <div className="space-y-4">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="w-full h-24 bg-muted animate-pulse rounded-2xl" />
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="w-full h-24 bg-muted animate-pulse rounded-2xl"
+              />
             ))}
           </div>
         )}
