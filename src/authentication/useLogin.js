@@ -8,9 +8,14 @@ export function useLogin() {
   const { mutate: login, isPending } = useMutation({
     mutationFn: loginapi,
     onSuccess(data) {
+      if (!data) return;
       localStorage.setItem("user_token", data.token);
       toast.success(data.message);
-      data.emailVerified ? navigate("/admin") : navigate("/verify-email");
+      if (data.emailVerified) {
+        navigate("/admin");
+      } else {
+        navigate("/verify-email");
+      }
     },
   });
   return { login, isPending };

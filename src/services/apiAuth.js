@@ -29,7 +29,11 @@ export async function signUp({
   }
 
   const data = await res.json();
-  return { token: data.token, message: data.message };
+  return {
+    token: data.token,
+    message: data.message,
+    emailVerified: data.emailVerified,
+  };
 }
 
 export async function login({ email, password }) {
@@ -49,7 +53,11 @@ export async function login({ email, password }) {
   }
 
   const data = await res.json();
-  return { token: data.token, message: data.message };
+  return {
+    token: data.token,
+    message: data.message,
+    emailVerified: data.emailVerified,
+  };
 }
 
 export async function verifyOtp(otp) {

@@ -8,6 +8,7 @@ export function useSignup() {
   const { mutate: signup, isPending } = useMutation({
     mutationFn: signUp,
     onSuccess(data) {
+      if (!data) return;
       localStorage.setItem("user_token", data.token);
       toast.success(data.message);
       navigate("/verify-email");
