@@ -9,11 +9,7 @@ import { useNavigate } from "react-router";
 import { ArrowRight, Loader2, User, Mail, Lock, AtSign } from "lucide-react";
 
 export function SignUpForm() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
   const { signup, isPending } = useSignup();
 
@@ -42,7 +38,10 @@ export function SignUpForm() {
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="firstName" className="text-sm font-semibold text-foreground">
+            <Label
+              htmlFor="firstName"
+              className="text-sm font-semibold text-foreground"
+            >
               First Name
             </Label>
             <div className="relative group">
@@ -51,12 +50,17 @@ export function SignUpForm() {
                 id="firstName"
                 placeholder="John"
                 className="pl-9 py-5 bg-muted/50 border-border focus:ring-primary-indigo/20 transition-all rounded-xl text-sm"
-                {...register("firstName", { required: "First name is required" })}
+                {...register("firstName", {
+                  required: "First name is required",
+                })}
               />
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="lastName" className="text-sm font-semibold text-foreground">
+            <Label
+              htmlFor="lastName"
+              className="text-sm font-semibold text-foreground"
+            >
               Last Name
             </Label>
             <div className="relative group">
@@ -72,7 +76,10 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="userName" className="text-sm font-semibold text-foreground">
+          <Label
+            htmlFor="userName"
+            className="text-sm font-semibold text-foreground"
+          >
             Username
           </Label>
           <div className="relative group">
@@ -87,7 +94,10 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-semibold text-foreground">
+          <Label
+            htmlFor="email"
+            className="text-sm font-semibold text-foreground"
+          >
             Email Address
           </Label>
           <div className="relative group">
@@ -106,7 +116,10 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-sm font-semibold text-foreground">
+          <Label
+            htmlFor="password"
+            className="text-sm font-semibold text-foreground"
+          >
             Password
           </Label>
           <div className="relative group">

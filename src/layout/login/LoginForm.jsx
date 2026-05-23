@@ -12,7 +12,6 @@ export function LoginForm() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
   } = useForm();
   const navigate = useNavigate();
   const { login, isPending } = useLogin();

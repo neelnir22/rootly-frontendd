@@ -112,17 +112,43 @@
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
   }
-
+  
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
   }
-
+  
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-
+  
   .animation-delay-400 {
     animation-delay: 400ms;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
